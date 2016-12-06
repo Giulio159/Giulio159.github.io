@@ -1,5 +1,7 @@
-<canvas id="ctx" width="640" height="424" style="border:1px solid #000000; background-color: black"></canvas>
+<body style = "background-color: black">
+<canvas id="ctx" width="640" height="424" style="border:3px solid grey; background-color: black; padding-left: 0; padding-right: 0; margin-left: auto; margin-right: auto; display: block;"></canvas>
 <script src="js/Entities.js"></script>
+
 <script> 
 var ctx = document.getElementById("ctx").getContext("2d"); 
 ctx.font = '30px Arial';
@@ -7,8 +9,8 @@ ctx.mozImageSmoothingEnabled = false;	//better graphics for pixel art
 ctx.msImageSmoothingEnabled = false;
 ctx.imageSmoothingEnabled = false;
 			
-var WIDTH = 640;
-var HEIGHT = 424;
+var WIDTH = 700;
+var HEIGHT = 500;
 var timeWhenGameStarted = Date.now();	//return time in ms
 
 var frameCount = 0;
@@ -106,10 +108,10 @@ update = function(){
 	Enemy.update();
 	
 	player.update();
-	
-	ctx.fillText(player.hp + " Hp",0,30);
-    ctx.fillStyle = "white";
-	ctx.fillText('Score: ' + score,200,30);
+    
+	ctx.font="30px Stencil";
+	ctx.fillStyle = "grey";
+	ctx.fillText('Score: ' + score,WIDTH/2 - 60,30);
 }
 
 startNewGame = function(){
@@ -158,3 +160,4 @@ setInterval(update,40);
 
 
 </script>
+</body>
