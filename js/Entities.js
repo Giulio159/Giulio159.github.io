@@ -1,4 +1,5 @@
 
+
 var player;
 
 Entity = function(type,id,x,y,width,height,img){
@@ -63,6 +64,41 @@ Entity = function(type,id,x,y,width,height,img){
 Player = function(){
 	var self = Actor('player','myId',60,60,60,60,Img.player,10,1);
 	
+    var super_draw = self.draw; 
+	self.draw = function(){
+		super_draw();
+		var x = self.x - player.x + WIDTH/2 + 20 ;
+		var y = self.y - player.y + HEIGHT/2 - self.height/2 - 20;
+		var diffHp = player.hp - player.hpMax;
+		ctx.save();
+		var width = 100*self.hp/self.hpMax + 20;
+		if(width < 0)
+			width = 0;
+        
+        
+        
+ if (player.hp >= 0) {
+     
+        ctx.fillStyle = "grey";
+        ctx.font="20px Stencil";
+        ctx.fillText(player.hp + " HP ",x-44,y-10);
+        ctx.strokeStyle = 'grey';
+        ctx.fillStyle = 'red';
+		ctx.fillRect(x-70,y,width-20,10);
+		
+        if ( diffHp > 0){
+		      ctx.strokeRect(x-70,y,120 + (diffHp * 10) -20,10);
+        } else {
+            ctx.strokeRect(x-70,y,100,10);
+        } if (player.hp <= 0){
+            ctx.fillStyleRect = 'black'
+        }
+}
+		
+		ctx.restore();
+	
+	}
+	
 	
 	var super_update = self.update;
 	self.update = function(){
@@ -96,9 +132,22 @@ Player = function(){
 			self.y = Maps.current.height - self.height/2;
 	}
 	self.onDeath = function(){
-		var timeSurvived = Date.now() - timeWhenGameStarted;		
-		console.log("You lost! You survived for " + timeSurvived + " ms.");		
-		startNewGame();
+		var timeSurvived = Date.now() - timeWhenGameStarted;
+        
+        ctx.fillText("You lost!",30, HEIGHT/2-40);
+        ctx.fillText( "Your score is"  + ((score--)-1), 30, HEIGHT/2);
+        ctx.fillText("click to continue", 30, HEIGHT/2 + 40)
+        self.pressingDown = false;
+	    self.pressingUp = false;
+	    self.pressingLeft = false;
+	    self.pressingRight = false;
+        
+		//console.log("You lost! You survived for " + timeSurvived + " ms.");
+        
+        if (self.pressingMouseLeft){
+        
+        startNewGame();
+        }
 	}
 	self.pressingDown = false;
 	self.pressingUp = false;
@@ -227,7 +276,7 @@ Enemy = function(id,x,y,width,height,img,hp,atkSpd){
 			width = 0;
 		ctx.fillRect(x-50,y,width,10);
 		
-		ctx.strokeStyle = 'black';
+		ctx.strokeStyle = 'grey';
 		ctx.strokeRect(x-50,y,100,10);
 		
 		ctx.restore();
@@ -282,7 +331,6 @@ Enemy.randomlyGenerate = function(){
 		Enemy(id,x,y,width,height,Img.bee,1,3);
 }
 
-//#####
 Upgrade = function (id,x,y,width,height,category,img){
 	var self = Entity('upgrade',id,x,y,width,height,img);
 	
@@ -301,7 +349,7 @@ Upgrade.update = function(){
 		if(isColliding){
 			if(Upgrade.list[key].category === 'score'){
 				score += 500;
-				player.hp += 2;
+                player.hp += 2;
             delete Upgrade.list[key];
             }
 			if(Upgrade.list[key].category === 'atkSpd'){
@@ -412,4 +460,6 @@ Bullet.generate = function(actor,aimOverwrite){
 	var spdY = Math.sin(angle/180*Math.PI)*11;
 	Bullet(id,x,y,spdX,spdY,width,height,actor.type);
 }
+
+
 
