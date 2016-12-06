@@ -135,7 +135,7 @@ Player = function(){
 		var timeSurvived = Date.now() - timeWhenGameStarted;
         
         ctx.fillText("You lost!",30, HEIGHT/2-40);
-        ctx.fillText( "Your score is"  + ((score--)-1), 30, HEIGHT/2);
+        ctx.fillText( "Your score is "  + ((score--)-1), 30, HEIGHT/2);
         ctx.fillText("click to continue", 30, HEIGHT/2 + 40)
         self.pressingDown = false;
 	    self.pressingUp = false;
