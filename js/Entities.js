@@ -135,7 +135,7 @@ Player = function(){
 		var timeSurvived = Date.now() - timeWhenGameStarted;
         
         ctx.fillText("You lost!",30, HEIGHT/2-40);
-        ctx.fillText( "Your score is "  + ((score--)-1), 30, HEIGHT/2);
+        ctx.fillText( "Your score is"  + ((score--)-1), 30, HEIGHT/2);
         ctx.fillText("click to continue", 30, HEIGHT/2 + 40)
         self.pressingDown = false;
 	    self.pressingUp = false;
@@ -306,9 +306,28 @@ Enemy = function(id,x,y,width,height,img,hp,atkSpd){
 
 Enemy.list = {};
 
+
 Enemy.update = function(){
-	if(frameCount % 75 === 0)	//every 2,5 sec
-		Enemy.randomlyGenerate();
+    
+  
+    
+     
+        if(score > 0 && score < 250){
+            var diff = 150
+        } else if (score > 250 && score < 500){
+           var diff = 75
+        } else if (score > 500 && score < 1500){
+            var diff = 50;
+        }  else if (score > 1500 ){
+            var diff = 25
+        };
+    
+	if(frameCount % diff === 0)//every 2,5 sec
+        
+        Enemy.randomlyGenerate();
+    
+      
+        
 	for(var key in Enemy.list){
 		Enemy.list[key].update();
 	}
@@ -460,6 +479,8 @@ Bullet.generate = function(actor,aimOverwrite){
 	var spdY = Math.sin(angle/180*Math.PI)*11;
 	Bullet(id,x,y,spdX,spdY,width,height,actor.type);
 }
+
+
 
 
 
