@@ -218,7 +218,7 @@ Actor = function(type,id,x,y,width,height,img,hp,atkSpd){
 	self.onDeath = function(){};
 	
 	self.performAttack = function(){
-		if(self.attackCounter > 30){	//every 1 sec
+		if(self.attackCounter > 25){	//every 1 sec
 			self.attackCounter = 0;
 			Bullet.generate(self);
 		}
