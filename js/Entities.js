@@ -135,7 +135,7 @@ Player = function(){
 		var timeSurvived = Date.now() - timeWhenGameStarted;
         
         ctx.fillText("You lost!",30, HEIGHT/2-40);
-        ctx.fillText( "Your score is"  + ((score--)-1), 30, HEIGHT/2);
+        ctx.fillText( "Your score is: "  + ((score--)-1), 30, HEIGHT/2);
         ctx.fillText("click to continue", 30, HEIGHT/2 + 40)
         self.pressingDown = false;
 	    self.pressingUp = false;
@@ -225,7 +225,7 @@ Actor = function(type,id,x,y,width,height,img,hp,atkSpd){
 	}
 	
 	self.performSpecialAttack = function(){
-		if(self.attackCounter > 50){	//every 1 sec
+		if(self.attackCounter > 50){	//every 2 sec
 			self.attackCounter = 0;
 			/*
 			for(var i = 0 ; i < 360; i++){
@@ -312,13 +312,13 @@ Enemy.update = function(){
   
     
      
-        if(score > 0 && score < 250){
+        if(score > 0 && score < 1000){
             var diff = 150
-        } else if (score > 250 && score < 500){
+        } else if (score > 1000 && score < 2500){
            var diff = 75
-        } else if (score > 500 && score < 1500){
+        } else if (score > 2500 && score < 5000){
             var diff = 50;
-        }  else if (score > 1500 ){
+        }  else if (score > 5000 ){
             var diff = 25
         };
     
