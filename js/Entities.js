@@ -315,7 +315,7 @@ Enemy.update = function(){
         if(score > 0 && score < 2000){
             var diff = 150
        } else if (score > 2000 && score < 5000){
-            var diff = 60;
+            var diff = 75;
         }  else if (score > 5000 ){
             var diff = 50;
         };
@@ -358,7 +358,7 @@ Upgrade = function (id,x,y,width,height,category,img){
 Upgrade.list = {};
 
 Upgrade.update = function(){
-	if(frameCount % 225 === 0)	//every 9 sec
+	if(frameCount % 500 === 0)	//every 9 sec
 		Upgrade.randomlyGenerate();
 	for(var key in Upgrade.list){
 		Upgrade.list[key].update();
@@ -366,14 +366,14 @@ Upgrade.update = function(){
 		if(isColliding){
 			if(Upgrade.list[key].category === 'score'){
 				score += 500;
-               			player.hp += 1;
+               			player.hp += 3;
             delete Upgrade.list[key];
             }
 			if(Upgrade.list[key].category === 'atkSpd'){
                 var angle = 0;
             while(angle<360){
                 Bullet.generate(player,angle);
-                angle = angle + 10;
+                angle = angle + 3;
                 delete Upgrade.list[key];
             }
             }
