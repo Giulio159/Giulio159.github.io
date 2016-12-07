@@ -312,14 +312,12 @@ Enemy.update = function(){
   
     
      
-        if(score > 0 && score < 1000){
-            var diff = 225
-        } else if (score > 1000 && score < 2500){
-           var diff = 150
-        } else if (score > 2500 && score < 5000){
-            var diff = 75;
+        if(score > 0 && score < 2000){
+            var diff = 150
+       } else if (score > 2000 && score < 5000){
+            var diff = 60;
         }  else if (score > 5000 ){
-            var diff = 25
+            var diff = 50;
         };
     
 	if(frameCount % diff === 0)//changes according to diff
