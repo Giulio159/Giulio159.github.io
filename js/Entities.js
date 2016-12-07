@@ -80,7 +80,7 @@ Player = function(){
  if (player.hp >= 0) {
      
         ctx.fillStyle = "grey";
-        ctx.font="20px Stencil";
+        ctx.font="20px Stencil, Fantasy";
         ctx.fillText(player.hp + " HP ",x-44,y-10);
         ctx.strokeStyle = 'grey';
         ctx.fillStyle = 'red';
