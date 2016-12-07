@@ -358,7 +358,7 @@ Upgrade = function (id,x,y,width,height,category,img){
 Upgrade.list = {};
 
 Upgrade.update = function(){
-	if(frameCount % 500 === 0)	//every 9 sec
+	if(frameCount % 625 === 0)	//every 25 sec
 		Upgrade.randomlyGenerate();
 	for(var key in Upgrade.list){
 		Upgrade.list[key].update();
@@ -366,7 +366,7 @@ Upgrade.update = function(){
 		if(isColliding){
 			if(Upgrade.list[key].category === 'score'){
 				score += 500;
-               			player.hp += 3;
+               			player.hp += 4;
             delete Upgrade.list[key];
             }
 			if(Upgrade.list[key].category === 'atkSpd'){
