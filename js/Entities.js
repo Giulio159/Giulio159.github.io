@@ -136,7 +136,7 @@ Player = function(){
         
         ctx.fillText("You lost!",30, HEIGHT/2-40);
         ctx.fillText( "Your score is: "  + ((score--)-1), 30, HEIGHT/2);
-        ctx.fillText("click to continue", 30, HEIGHT/2 + 40)
+        ctx.fillText("left click to continue", 30, HEIGHT/2 + 40)
         self.pressingDown = false;
 	    self.pressingUp = false;
 	    self.pressingLeft = false;
@@ -144,7 +144,7 @@ Player = function(){
         
 		//console.log("You lost! You survived for " + timeSurvived + " ms.");
         
-        if (self.pressingMouseLeft || self.pressingMouseRight){
+        if (self.pressingMouseLeft){
         
         startNewGame();
         }
