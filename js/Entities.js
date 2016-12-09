@@ -144,7 +144,7 @@ Player = function(){
         
 		//console.log("You lost! You survived for " + timeSurvived + " ms.");
         
-        if (self.pressingMouseLeft){
+        if (self.pressingMouseLeft || self.pressingMouseRight){
         
         startNewGame();
         }
