@@ -312,11 +312,11 @@ Enemy.update = function(){
   
     
      
-        if(score > 0 && score < 2000){
+        if(score > 0 && score < 1500){
             var diff = 150
-       } else if (score > 2000 && score < 5000){
+       } else if (score > 1500 && score < 4000){
             var diff = 75;
-        }  else if (score > 5000 ){
+        }  else if (score > 4000 ){
             var diff = 50;
         };
     
