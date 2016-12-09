@@ -151,9 +151,19 @@ Maps.current = Maps('field','img/map.png',1280,960);
 
 
 
+	
+ctx.fillText("Shoot 'em up!");
+ctx.fillText("top-down space shooter");
+ctx.fillText("wasd to move, right/left click to kill 'em all!");
+ctx.fillText("left click to start");
+	if (self.pressingMouseLeft){
+        
+        startNewGame();
+        }
+
 
 player = Player();
-startNewGame();
+
 
 setInterval(update,40);
 
