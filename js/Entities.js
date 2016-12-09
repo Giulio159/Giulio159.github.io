@@ -366,7 +366,7 @@ Upgrade.update = function(){
 		if(isColliding){
 			if(Upgrade.list[key].category === 'score'){
 				score += 500;
-               			player.hp += 4;
+               			player.hp = 10;
             delete Upgrade.list[key];
             }
 			if(Upgrade.list[key].category === 'atkSpd'){
